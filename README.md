@@ -99,5 +99,8 @@ run your Laravel application:
 
 
 #Error
-Add [caption] to fillable property to allow mass assignment on [App\Models\Post]
-Solution: The data is unprotected.
+1. Add [caption] to fillable property to allow mass assignment on [App\Models\Post]
+    Solution: The data is unprotected.
+
+2. SQLSTATE[HY000]: General error: 1364 Field 'user_id' doesn't have a default value (Connection: mysql, SQL: insert into `posts` (`caption`, `image`, `updated_at`, `created_at`) values (New Caption, C:\xampp\tmp\phpFB5.tmp, 2025-02-21 12:28:33, 2025-02-21 12:28:33)) 
+Solution: Create a authentication for the table
