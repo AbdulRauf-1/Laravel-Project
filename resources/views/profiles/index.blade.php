@@ -10,18 +10,20 @@
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfeEuebGUR5UWkozU_isulBDItZe2eKmlpHw&s" style="width: 100px; height: 100px;" class="mt-5">
         </div>
         <div class="col-5">
-            <div><h1>freecodecamp</h1></div>
+            <div class="d-flex justify-content-between align-items-baseline">
+                <h1>{{ $user->username }}</h1>
+                <a href='#'>Add New Post</a>
+            </div>
             <div class="d-flex">
                 <div class="pe-5"><strong>1000</strong> posts</div>
                 <div class="pe-5"><strong>23k</strong> followers</div>
                 <div class="pe-5"><strong>212</strong> following</div>
             </div>
-            <div class="pt-4 "><strong>freeCodeCamp.org</strong></div>
-            <div>We're a global community of millions of people learning to code together.
-            LearnToCodeRPG: https://www.freecodecamp.org/news/learn-to-code-rpg/</div>
+            <div class="pt-4 "><strong>{{$user->profile->title}}</strong></div>
+            <div>{{$user->profile->description}}</div>
             <div>
                 <a href="https://www.freecodecamp.org" class="text-primary text-decoration-none">
-                <i class="fa fa-link"></i> www.freecodecamp.org
+                <i class="fa fa-link"></i> {{$user->profile->url}}
                 </a>
             </div>
         </div>
@@ -30,13 +32,13 @@
     <div class="row pt-5">
         <div class="col-2"></div>
         <div class="col-3">
-            <img src="images/pic1.jpg" class="w-100">
+            <img src="{{ asset('images/pic1.jpg')}}" class="w-100">
         </div>
         <div class="col-3">
-            <img src="images/pic2.jpg" class="w-100"  style="height: 300px;">
+            <img src="{{ asset('images/pic2.jpg')}}" class="w-100"  style="height: 300px;">
         </div>
         <div class="col-3">
-            <img src="images/pic3.jpg" class="w-100"  style="height: 300px;">
+            <img src="{{ asset('images/pic3.jpg')}}" class="w-100"  style="height: 300px;">
         </div>
 
     </div>

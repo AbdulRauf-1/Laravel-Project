@@ -92,3 +92,12 @@ Since authentication requires some database tables, migrate them:
 
 run your Laravel application:
     php artisan serve
+
+
+
+
+
+
+#Error
+Add [caption] to fillable property to allow mass assignment on [App\Models\Post]
+Solution: The data is unprotected.
