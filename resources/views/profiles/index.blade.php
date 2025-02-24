@@ -12,10 +12,15 @@
         <div class="col-5">
             <div class="d-flex justify-content-between align-items-baseline">
                 <h1>{{ $user->username }}</h1>
-                <a href='#'>Add New Post</a>
+                @can ('update', $user->profile)
+                    <a href='/p/create'>Add New Post</a>
+                @endcan
             </div>
+            @can ('update', $user->profile)
+                <a href="/profile/{{$user->id}}/edit">Edit Profile</a>
+            @endcan
             <div class="d-flex">
-                <div class="pe-5"><strong>1000</strong> posts</div>
+                <div class="pe-5"><strong>{{$user->posts->count()}}</strong> posts</div>
                 <div class="pe-5"><strong>23k</strong> followers</div>
                 <div class="pe-5"><strong>212</strong> following</div>
             </div>
@@ -29,19 +34,21 @@
         </div>
     </div>
 
-    <div class="row pt-5">
-        <div class="col-2"></div>
-        <div class="col-3">
-            <img src="{{ asset('images/pic1.jpg')}}" class="w-100">
+    <div class="row pt-5 d-flex flex-wrap">
+    <div class="col-2"></div>
+    @foreach ($user->posts as $post )
+        <div class="col-3 mb-3">
+            <a href="/p/{{$post->id}}">
+                <img src="/storage/{{$post->image}}" class="w-100">
+            </a>
         </div>
-        <div class="col-3">
-            <img src="{{ asset('images/pic2.jpg')}}" class="w-100"  style="height: 300px;">
-        </div>
-        <div class="col-3">
-            <img src="{{ asset('images/pic3.jpg')}}" class="w-100"  style="height: 300px;">
-        </div>
+        
+        @if ($loop->iteration % 3 == 0)
+            <div class="col-2"></div>
+        @endif
+    @endforeach
+</div>
 
-    </div>
 
 </div>
 @endsection
