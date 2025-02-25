@@ -7,11 +7,16 @@
     <div class="row">
         <div class="col-2"></div>
         <div class="col-2">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfeEuebGUR5UWkozU_isulBDItZe2eKmlpHw&s" style="width: 100px; height: 100px;" class="mt-5">
+        <img src="{{$user->profile->profileImage()}}" style="width: 100px; height: 100px;" class="mt-5 rounded">
         </div>
         <div class="col-5">
             <div class="d-flex justify-content-between align-items-baseline">
-                <h1>{{ $user->username }}</h1>
+                <div class="d-flex align-items-center pb-3">
+                    <div class="h4 me-3">{{ $user->username }}</div>
+                    <button class="btn btn-primary">Follow</button>
+                </div>
+                
+
                 @can ('update', $user->profile)
                     <a href='/p/create'>Add New Post</a>
                 @endcan
