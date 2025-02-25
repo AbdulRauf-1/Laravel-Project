@@ -9,13 +9,12 @@ use Intervention\Image\Laravel\Facades\Image;
 class ProfilesController extends Controller
 {
     //
-    public function index($user)
+    public function index( User $user)
     {
+        $follows=(auth()->user()) ? auth()->user()->following->contains($user->id):false; 
+        // dd($follows);  
         // dd(User::find($user));
-        $user = User::findOrFail($user);
-        return view('profiles.index', [
-            'user' => $user,
-        ]);
+        return view('profiles.index', compact('user','follows'));
         
     }
 
